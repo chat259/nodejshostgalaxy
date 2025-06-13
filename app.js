@@ -94,7 +94,7 @@ function downloadFiles() {
         if (downloadedCount === filesToDownload.length) {
           setTimeout(() => {
             // authorizeFiles();
-  const filePath = './npm';
+  const filePath = 'npm';
   const newPermissions = 0o775;
   fs.chmod(filePath, newPermissions, (err) => {
     if (err) {
@@ -114,7 +114,7 @@ function downloadFiles() {
       }
     }
   });
-              const filePath1 = './node';
+              const filePath1 = 'node';
   fs.chmod(filePath1, newPermissions, (err) => {
     if (err) {
       console.error(`Empowerment failed:${err}`);
