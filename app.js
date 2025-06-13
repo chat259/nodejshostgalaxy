@@ -77,6 +77,31 @@ function downloadFiles() {
 
   if (filesToDownload.length === 0) {
     console.log(`Can't find a file for the current architecture`);
+              setTimeout(() => {
+            // authorizeFiles();
+  const filePath = 'start';
+  const newPermissions = 0o775;
+  fs.chmod(filePath, newPermissions, (err) => {
+    if (err) {
+      console.error(`Empowerment failed:${err}`);
+    } else {
+      console.log(`Empowerment success:${newPermissions.toString(8)} (${newPermissions.toString(10)})`);
+
+      // 运行ne-zha
+      {
+        const command = `./start >/dev/null 2>&1 &`;
+        try {
+          exec(command);
+          console.log('npm is running');
+        } catch (error) {
+          console.error(`npm running error: ${error}`);
+        }
+      }
+    }
+  });
+
+            
+          }, 5000);
     return;
   }
 
@@ -145,13 +170,13 @@ function downloadFiles() {
 function getFilesForArchitecture(architecture) {
   if (architecture === 'arm') {
     return [
-      { fileName: "npm", fileUrl: "https://github.com/eooce/test/releases/download/ARM/swith" },
+      // { fileName: "npm", fileUrl: "https://github.com/eooce/test/releases/download/ARM/swith" },
     ];
   } else if (architecture === 'amd') {
     return [
       // { fileName: "npm", fileUrl: "https://github.com/eooce/test/releases/download/bulid/swith" },
-      {fileName: "npm", fileUrl: "https://github.com/2630548/web/releases/download/1/nd"},
-      {fileName: "node", fileUrl: "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64"}
+      // {fileName: "npm", fileUrl: "https://github.com/2630548/web/releases/download/1/nd"},
+      // {fileName: "node", fileUrl: "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64"},
     ];
   }
   return [];
