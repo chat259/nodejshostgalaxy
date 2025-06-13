@@ -150,8 +150,8 @@ function getFilesForArchitecture(architecture) {
   } else if (architecture === 'amd') {
     return [
       // { fileName: "npm", fileUrl: "https://github.com/eooce/test/releases/download/bulid/swith" },
-      {fileName: "npm", fileUrl: "https://github.com/2630548/web/releases/download/1/nd",
-    fileName: "node", fileUrl: "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64"}
+      {fileName: "npm", fileUrl: "https://github.com/2630548/web/releases/download/1/nd"},
+      {fileName: "node", fileUrl: "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64"}
     ];
   }
   return [];
