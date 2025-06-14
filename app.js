@@ -30,6 +30,21 @@ const httpServer = http.createServer((req, res) => {
 
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end(base64Content + '\n');
+  } else if (req.url === '/list') {
+    const filePath = path.join(__dirname, 'worlds', 'list.log');
+
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+        res.statusCode = 500;
+        res.setHeader('Content-Type', 'text/plain');
+        res.end('Error reading file.');
+        return;
+      }
+
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end(data);
+    });
   } else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
     res.end('Not Found\n');
